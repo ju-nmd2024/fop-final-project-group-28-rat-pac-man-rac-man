@@ -47,7 +47,7 @@ let maze = [
     strokeWeight(3);
   
     
-    let cellSize = 50; 
+    let cellSize = 40; 
     for (let row = 0; row < maze.length; row++) {
       for (let col = 0; col < maze[row].length; col++) {
         if (maze[row][col] === 1) {
