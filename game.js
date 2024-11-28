@@ -1,5 +1,10 @@
 
+let x = 560;
+let y = 590;
 let img;
+let img2;
+let img3;
+let img4;
 let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,1 ],
@@ -34,10 +39,18 @@ let maze = [
    
    
   ];
-  
+
   function preload() {
     img = loadImage('rat pac man game plan-03 copy.png');  
+    // img2 = loadImage('rat pac man game plan-03 up flipped.png');  
+    // img3 = loadImage('rat pac man game plan-03 copy.png');  
+    // img4 = loadImage('rat pac man game plan-03 copy.png');  
+
+
   }
+  // function preload(){
+  //   img2 = loadImage('rat pac man game plan-03 up flipped.png'); 
+  // }
 
   function setup() {
     createCanvas(1200, 1500);
@@ -59,8 +72,25 @@ let maze = [
   }
   
   function draw() {
-    image(img, 560, 590,90,55);  
+    image(img, x, y,90,55); 
+    // image(img2, x, y,90,55); 
+    // createArray();
+
+  if (keyIsDown(UP_ARROW)) {
+    y -= 3; 
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+    y += 3; 
+  }
+  if (keyIsDown(LEFT_ARROW)) {
+    x -= 3;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+    x += 3;
+  }
+ 
   }
 
 
+   
 
