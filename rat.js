@@ -8,10 +8,10 @@ export default class Rat{
       this.imgleft = imgleft;
       this.imgup = imgup;
       this.imgdown = imgdown;
-      this.imgclosed_right = this.imgclosed_right;
-      this.imgclosed_left = this.imgclosed_left;
-      this.imgclosed_down = this.imgclosed_down;
-      this.imgclosed_up = this.imgclosed_up; 
+      this.imgclosed_right = imgclosed_right;
+      this.imgclosed_left = imgclosed_left;
+      this.imgclosed_down = imgclosed_down;
+      this.imgclosed_up = imgclosed_up; 
       this.x = 560;
       this.y = 590;
     }
@@ -20,18 +20,18 @@ export default class Rat{
     }
     movement(){
       if (keyIsDown(UP_ARROW)) {
-        this.img= imgup;
+        this.img= this.imgup;
         this.y -= 3; 
       }
       if (keyIsDown(DOWN_ARROW)) {
-        this.img= imgdown;
+        this.img= this.imgdown;
         this.y += 3; 
       }
       if (keyIsDown(LEFT_ARROW)) {
-        this.img= imgleft;
+        this.img= this.imgleft;
       }
       if (keyIsDown(RIGHT_ARROW)) {
-        this.img= imgright;
+        this.img= this.imgright;
       }
       
     }

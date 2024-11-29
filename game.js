@@ -62,7 +62,11 @@ let maze = [
 
   function setup() {
     createCanvas(1200, 1500);
-    background(0); 
+    
+    rat = new Rat(img, imgright, imgleft, imgup, imgdown,imgclosed_up,imgclosed_down,imgclosed_left,imgclosed_right);
+  }
+ function drawGrid(){
+  background(0); 
     fill(0);
     stroke(0,0,255); 
     strokeWeight(3);
@@ -77,30 +81,34 @@ let maze = [
         }
       }
     }
-    rat = new Rat(img, imgright, imgleft, imgup, imgdown,imgclosed_up,imgclosed_down,imgclosed_left,imgclosed_right);
-  }
-  
+ }
+
+
   function keyReleased() {
-    if (keyCode === UP_ARROW) {
-      this.img= imgclosed_up;
-    }
-    if (keyCode === DOWN_ARROW) {
-      this.img= imgclosed_down;
-    }
-    if (keyCode === LEFT_ARROW) {
-      this.img= imgclosed_left;
-    }
-    if (keyCode === RIGHT_ARROW) {
-      this.img= imgclosed_right;
-    }
+    rat.keyReleased();
+    // if (keyCode === UP_ARROW) {
+    //   this.img= imgclosed_up;
+    // }
+    // if (keyCode === DOWN_ARROW) {
+    //   this.img= imgclosed_down;
+    // }
+    // if (keyCode === LEFT_ARROW) {
+    //   this.img= imgclosed_left;
+    // }
+    // if (keyCode === RIGHT_ARROW) {
+    //   this.img= imgclosed_right;
+    // }
 
   }
   
 
   function draw() {
+    drawGrid();
     rat.movement(); 
     rat.show(); 
     // image(img, x, y,90,55); 
   }
+  
+
   
   
