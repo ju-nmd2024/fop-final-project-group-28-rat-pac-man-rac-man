@@ -103,3 +103,4 @@ let maze = [
     // image(img, x, y,90,55); 
   }
   
+  
