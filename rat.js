@@ -29,9 +29,11 @@ export default class Rat{
       }
       if (keyIsDown(LEFT_ARROW)) {
         this.img= this.imgleft;
+        this.x += -3;
       }
       if (keyIsDown(RIGHT_ARROW)) {
         this.img= this.imgright;
+        this.x += 3;
       }
       
     }
