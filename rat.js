@@ -21,6 +21,7 @@ export default class Rat{
     movement(){
       if (keyIsDown(UP_ARROW)) {
         this.img= this.imgup;
+        //if (row > 0 && maze[row - 1][col] !== 1)
         this.y -= 3; 
       }
       if (keyIsDown(DOWN_ARROW)) {
