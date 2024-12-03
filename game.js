@@ -1,15 +1,12 @@
 
 import Rat from "rat.js";
-import Exterminator from "./exterminator";
+import grey_Exterminator from "grey_exterminator.js";
+import red_Exterminator from "red_exterminator.js";
+import blue_Exterminator from "blue_exterminator.js";
+import pink_Exterminator from "pink_exterminator.js";
 
 let win_video;
 let rat;
-
-let purpleExterminator;
-let pinkExterminator;
-let greyExterminator;
-let redExterminator;
-
 let normal_cheese;
 let blue_cheese;
 
@@ -74,10 +71,10 @@ let maze = [
     win_video = ('rat pac man game plan-03 copy_1.mp4');
     normal_cheese = loadImage('normal cheese.png');
     blue_cheese = loadImage('blue_cheese.png');
-    imgpink = loadImage('pinkExterminator.png');
-    imgpurple = loadImage('purpleExterminator.png');
-    imggrey = loadImage('greyExterminator.png');
-    imgred = loadImage ('redExterminator.png');
+    red_exterminator = loadImage('redExterminator.png');
+    blue_exterminator = loadImage('blueExterminator.png');
+    pink_exterminator = loadImage('pinkExterminator.png');
+    grey_exterminator = loadImage('greyExterminator.png');
   }
   
   function collision(){
@@ -93,10 +90,11 @@ let maze = [
     createCanvas(1200, 1500);
     
     rat = new Rat(img, imgright, imgleft, imgup, imgdown,imgclosed_up,imgclosed_down,imgclosed_left,imgclosed_right);
-    purpleExterminator = new Exterminator (imgpurple, 200, 200);
-    pinkExterminator = new Exterminator (imgpink, 300, 300);
-    greyExterminator = new Exterminator (imggrey, 400, 400);
-    redExterminator = new Exterminator (imgred, 500, 500);
+    grey_exterminator = new grey_Exterminator(grey_exterminator);
+    red_exterminator = new red_Exterminator(red_exterminator);
+    blue_exterminator = new blue_Exterminator(blue_exterminator);
+    pink_exterminator = new pink_Exterminator(pink_exterminator);
+  
   }
  
   function drawGrid(){
@@ -130,12 +128,15 @@ let maze = [
   function draw() {
     drawGrid();
     collision();
+
+    
+
     rat.movement(); 
     rat.show();
    
-    purpleExterminator.show();
-    pinkExterminator.show();
-    greyExterminator.show();
-    redExterminator.show();
+    grey_Exterminator.show();
+    red_Exterminator.show();
+    pink_Exterminator.show();
+    purple_Exterminator.show();
     
   }
