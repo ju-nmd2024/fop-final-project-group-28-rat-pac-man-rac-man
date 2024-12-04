@@ -2,7 +2,7 @@
 
 export default class Rat{
     constructor(img,imgright,imgleft,imgup,imgdown,imgclosed_right,imgclosed_left,imgclosed_down,imgclosed_up){
-      this.size = 50; 
+      this.size = boxSize; 
       this.img = img;
       this.imgright = imgright;
       this.imgleft = imgleft;
@@ -19,24 +19,51 @@ export default class Rat{
       image(this.img, this.x, this.y, 80, 50);
     }
     movement(){
+      let ratCenterX = this.x + 80/2;
+      let ratCenterY = this.y + 50/2;
+      let col = Math.floor (ratCenterX / boxSize);
+      let row = Math.floor (ratCenterY / boxSize);
+
+      // Movement for each key
       if (keyIsDown(UP_ARROW)) {
-        this.img= this.imgup;
-        //if (row > 0 && maze[row - 1][col] !== 1)
-        this.y -= 3; 
+        if (maze[row - 1] && maze [row - 1][col]!== 1){ // check next position
+          this.img= this.imgup;
+          this.y -= 3; 
+        } 
       }
       if (keyIsDown(DOWN_ARROW)) {
-        this.img= this.imgdown;
-        this.y += 3; 
+        if(maze[row + 1]&& maze [row + 1]!== 1){
+          this.img= this.imgdown;
+          this.y += 3; 
+        }
       }
       if (keyIsDown(LEFT_ARROW)) {
-        this.img= this.imgleft;
-        this.x += -3;
+        if(maze[row]&& maze [row][col - 1]!== 1){
+          this.img= this.imgleft;
+          this.x += -3;
+        }
       }
       if (keyIsDown(RIGHT_ARROW)) {
-        this.img= this.imgright;
-        this.x += 3;
+        if(maze[row] && maze [row][col + 1]!== 1){
+          this.img= this.imgright;
+          this.x += 3;
+        }
       }
       
+    }
+
+    //cheese eating
+    checkCollision(){
+      let ratCenterX = this.x + 80/2;
+      let ratCenterY = this.y + 50/2;
+      let col = Math.floor(ratCenterX/boxSize);
+      let row = Math.floor(ratCenterY/boxSize);
+
+      if(maze[row]&& maze[row][col]){
+        if(maze[row][col] === 2 || maze [row][col] === 3){
+          maze[row][col] = 0;
+        }
+      }
     }
 
     keyReleased() {

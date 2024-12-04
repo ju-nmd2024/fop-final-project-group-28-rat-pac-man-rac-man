@@ -5,6 +5,7 @@ import red_Exterminator from "red_exterminator.js";
 import blue_Exterminator from "blue_exterminator.js";
 import pink_Exterminator from "pink_exterminator.js";
 
+let boxSize = 50;
 let win_video;
 let rat;
 let normal_cheese;
@@ -76,15 +77,6 @@ let maze = [
     pink_exterminator = loadImage('pinkExterminator.png');
     grey_exterminator = loadImage('greyExterminator.png');
   }
-  
-  function collision(){
-    for (let row = 0; row < maze.length; row++) {
-      for (let col = 0; col < maze[row].length; col++) {
-        if (maze[row][col] === 1) {  
-        }
-      }
-    }
-  }
 
   function setup() {
     createCanvas(1200, 1500);
@@ -104,7 +96,7 @@ let maze = [
     strokeWeight(3);
   
     
-    let boxSize = 50; 
+    
     for (let row = 0; row < maze.length; row++) {
       for (let col = 0; col < maze[row].length; col++) {
         if (maze[row][col] === 1) {
@@ -127,10 +119,7 @@ let maze = [
 
   function draw() {
     drawGrid();
-    collision();
-
     
-
     rat.movement(); 
     rat.show();
    
