@@ -71,15 +71,19 @@ export default class Rat{
     let ratCenterY =this.y + 50 /2;
     let col = Math.floor(ratCenterX/50 );  
     let row = Math.floor(ratCenterY/50 ); 
-    console.log(col);
-     console.log(row);
+    //console.log(col);
+    // console.log(row);
   
    
     if (maze[row] && maze[row][col]) {
       if (maze[row][col] === 2 || maze[row][col] === 3) {  
         maze[row][col] = 0; 
+        score++;
+        console.log("eaten");
+        console.log(score);
       }
     }
+    
   }
   
   keyReleased() {

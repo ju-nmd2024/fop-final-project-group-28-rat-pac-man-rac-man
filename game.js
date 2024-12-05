@@ -6,7 +6,8 @@ import purple_Exterminator from "./purple_exterminator.js";
 import pink_Exterminator from "./pink_exterminator.js";
 
 let boxSize = 50;
-let win_video;
+// let win_video;
+let win_video = createVideo('/WinVideo.mp4');
 let rat;
 let normal_cheese;
 let blue_cheese;
@@ -23,7 +24,8 @@ let red_exterminator;
 let purple_exterminator;
 let pink_exterminator;
 let grey_exterminator;
-let gameState;
+let score;
+//let gameState;
 
 let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -60,18 +62,23 @@ let maze = [
    
   ];
 
-  /*function startScreen(){
+ // function startScreen(){
     
-  }
-  function gameScreen(){
+ // }
+ // function gameScreen(){
 
-  }
+ // }
+
   function WinScreen(){
-    //video(win_video),0,0,width,height;
-  }
-  function LoseScreen(){
+    if(score === 2){
+      image(win_video, 0, 0, width, height);
 
-  }*/
+    }
+   
+  }
+  //function LoseScreen(){
+
+  //}
 
   function preload() {
     img = loadImage('ratRight.png');
@@ -79,11 +86,11 @@ let maze = [
     imgleft = loadImage('ratLeft.png');
     imgup = loadImage('ratUp.png');
     imgdown = loadImage('ratDown.png');
-    imgclosed_right = loadImage('ratClosedRight.png');
-    imgclosed_left = loadImage('ratClosedLeft.png');
-    imgclosed_down = loadImage('ratClosedDown.png');
-    imgclosed_up = loadImage('ratClosedUpFlipped.png');
-    win_video = ('rat-pac-man-game-plan-03-copy_1.mp4');
+    imgclosed_right = loadImage('ratClosedUpFlipped.png');
+    imgclosed_left = loadImage('ratClosedDown.png');
+    imgclosed_down = loadImage('ratClosedLeft.png');
+    imgclosed_up = loadImage('ratClosedRight.png');
+    // win_video = loadVideo('WinVideo.mp4');
     normal_cheese = loadImage('normal-cheese.png');
     blue_cheese = loadImage('blue-cheese.png');
     red_exterminator = loadImage('redExterminator.png');
@@ -101,7 +108,8 @@ let maze = [
     red_exterminator = new red_Exterminator(red_exterminator);
     purple_exterminator = new purple_Exterminator(purple_exterminator);
     pink_exterminator = new pink_Exterminator(pink_exterminator);
-  
+    score = 0;
+    
   }
   window.setup = setup;
  
@@ -126,6 +134,9 @@ let maze = [
         if (maze[row][col] === 3) {
           image(blue_cheese, col * boxSize , row * boxSize, boxSize, boxSize);
         }
+        if (maze[row][col] === 4) {
+          image(grey_exterminator, col * boxSize , row * boxSize, boxSize, boxSize);
+        }
       }
     }
  }
@@ -136,16 +147,27 @@ let maze = [
   }
 window.keyReleased=keyReleased;
   function draw() {
+
+    if(score === 2){
+     WinScreen();
+
+    }
+
     drawGrid();
     
     rat.movement(); 
     rat.show();
+    rat.checkCollision();
     
    
     grey_exterminator.show();
+    grey_exterminator.movement();
     red_exterminator.show();
     pink_exterminator.show();
     purple_exterminator.show();
     
   }
 window.draw = draw;
+
+
+
