@@ -1,3 +1,6 @@
+
+import { maze } from "./game.js";
+
 export default class grey_Exterminator{
     constructor(grey_Exterminator){
         this.size = 20;

@@ -1,4 +1,6 @@
 //codes taken from p5.js
+import { maze } from "./game.js";
+
 export default class Rat{
   constructor(img,imgright,imgleft,imgup,imgdown,imgclosed_right,imgclosed_left,imgclosed_down,imgclosed_up){
     this.size = 50; 
@@ -13,6 +15,7 @@ export default class Rat{
     this.imgclosed_up = imgclosed_up; 
     this.x = 560;
     this.y = 590;
+    
   }
   show(){
     image(this.img, this.x, this.y, 80, 50);

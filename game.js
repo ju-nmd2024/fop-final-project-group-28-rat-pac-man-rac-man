@@ -7,7 +7,7 @@ import pink_Exterminator from "./pink_exterminator.js";
 
 let boxSize = 50;
 // let win_video;
-let win_video = createVideo('/WinVideo.mp4');
+//let win_video = createVideo('/WinVideo.mp4');
 let rat;
 let normal_cheese;
 let blue_cheese;
@@ -27,7 +27,7 @@ let grey_exterminator;
 let score;
 //let gameState;
 
-let maze = [
+export let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 2, 0, 0, 2, 0, 0, 2, 0, 1, 1, 0, 2, 0, 2, 0, 2, 0, 2, 1, 1,1 ],
     [1, 1, 1, 3, 1, 1, 0, 2, 1, 1, 2, 1, 1, 0, 1, 1, 0, 2, 1, 1, 0, 1, 1, 1],
@@ -168,6 +168,7 @@ window.keyReleased=keyReleased;
     
   }
 window.draw = draw;
+
 
 
 
