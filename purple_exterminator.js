@@ -1,7 +1,7 @@
 export default class purple_Exterminator{
     constructor(purple_Exterminator){
         this.size = 10;
-        this.x = 630;
+        this.x = 600;
         this.y = 870;
         this.purple_Exterminator = purple_Exterminator;
         this.boxsize = 50;

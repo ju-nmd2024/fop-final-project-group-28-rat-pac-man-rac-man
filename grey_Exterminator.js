@@ -5,8 +5,13 @@ export default class grey_Exterminator{
         this.y = 870;
         this.grey_Exterminator = grey_Exterminator;
         this.boxSize = 50;
+        this.gameState = true;
     } 
 movement(){
+    if(gamState === true){
+
+    }
+
 
     }
 
