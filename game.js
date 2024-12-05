@@ -105,6 +105,8 @@ let maze = [
   }
   window.setup = setup;
  
+
+
   function drawGrid(){
   background(0); 
     fill(0);
@@ -132,12 +134,13 @@ let maze = [
     rat.keyReleased();
     
   }
-
+window.keyReleased=keyReleased;
   function draw() {
     drawGrid();
     
     rat.movement(); 
     rat.show();
+    
    
     grey_exterminator.show();
     red_exterminator.show();
@@ -145,3 +148,4 @@ let maze = [
     purple_exterminator.show();
     
   }
+window.draw = draw;

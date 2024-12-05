@@ -21,8 +21,8 @@ export default class Rat{
 
     let ratCenterX = this.x + 80 / 2;
     let ratCenterY = this.y + 50 / 2;
-    let col = Math.floor(ratCenterX / boxSize);
-    let row = Math.floor(ratCenterY / boxSize);
+    let col = Math.floor(ratCenterX / 50);
+    let row = Math.floor(ratCenterY /50);
 
 
     if((col >= 24)){
@@ -69,8 +69,8 @@ export default class Rat{
   checkCollision() {
     let ratCenterX =this.x + 80 /2;
     let ratCenterY =this.y + 50 /2;
-    let col = Math.floor(ratCenterX/boxSize );  
-    let row = Math.floor(ratCenterY/boxSize ); 
+    let col = Math.floor(ratCenterX/50 );  
+    let row = Math.floor(ratCenterY/50 ); 
     console.log(col);
      console.log(row);
   

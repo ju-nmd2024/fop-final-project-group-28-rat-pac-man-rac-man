@@ -5,11 +5,17 @@ export default class grey_Exterminator{
         this.y = 870;
         this.grey_Exterminator = grey_Exterminator;
         this.boxSize = 50;
-        this.gameState = true;
+        //this.gameState = true;
     } 
 movement(){
-    if(gamState === true){
-        
+
+    let exterminatorCenterX = this.x + 70 / 2;
+    let exterminatorCenterY = this.y + 90 / 2;
+    let col = Math.floor(exterminatorCenterX / boxSize);
+    let row = Math.floor(exterminatorCenterY / boxSize);
+
+    if(Rat.movement){
+        Mathfloor(Math.random(this.x && this.y)*grey_Exterminator);
     }
 
 
