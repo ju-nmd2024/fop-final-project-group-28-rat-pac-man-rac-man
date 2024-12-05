@@ -9,7 +9,7 @@ export default class grey_Exterminator{
     } 
 movement(){
     if(gamState === true){
-
+        
     }
 
 

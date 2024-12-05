@@ -23,6 +23,7 @@ let red_exterminator;
 let purple_exterminator;
 let pink_exterminator;
 let grey_exterminator;
+let gameState;
 
 let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
