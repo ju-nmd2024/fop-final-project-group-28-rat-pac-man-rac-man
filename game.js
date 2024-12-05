@@ -4,10 +4,12 @@ import grey_Exterminator from "./grey_exterminator.js";
 import red_Exterminator from "./red_exterminator.js";
 import purple_Exterminator from "./purple_exterminator.js";
 import pink_Exterminator from "./pink_exterminator.js";
-
+let x =300;
+let y = 100;
 let boxSize = 50;
 // let win_video;
-//let win_video = createVideo('/WinVideo.mp4');
+// let win_video = createVideo('/WinVideo.mp4');
+// let lose_video = createVideo('/WinVideo.mp4');
 let rat;
 let normal_cheese;
 let blue_cheese;
@@ -25,13 +27,15 @@ let purple_exterminator;
 let pink_exterminator;
 let grey_exterminator;
 let score;
+//let startScreen;
+let state = "start";
 //let gameState;
-
-export let maze = [
+// https://www.youtube.com/watch?v=HyK_Q5rrcr4 for the array only
+let maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-    [1, 1, 1, 2, 0, 0, 2, 0, 0, 2, 0, 1, 1, 0, 2, 0, 2, 0, 2, 0, 2, 1, 1,1 ],
-    [1, 1, 1, 3, 1, 1, 0, 2, 1, 1, 2, 1, 1, 0, 1, 1, 0, 2, 1, 1, 0, 1, 1, 1],
-    [1, 1, 1, 0, 1, 1, 2, 0, 1, 1, 0, 1, 1, 2, 1, 1, 2, 0, 1, 1, 2, 1, 1, 1],
+    [1, 1, 1, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 1,1 ],
+    [1, 1, 1, 3, 1, 1, 0, 2, 1, 1, 2, 2, 2, 0, 1, 1, 0, 2, 1, 1, 0, 1, 1, 1],
+    [1, 1, 1, 0, 1, 1, 2, 0, 1, 1, 0, 0, 0, 2, 1, 1, 2, 0, 1, 1, 2, 1, 1, 1],
     [1, 1, 1, 2, 1, 1, 0, 2, 1, 1, 2, 1, 1, 0, 1, 1, 0, 2, 1, 1, 0, 1, 1, 1],
     [1, 1, 1, 0, 2, 0, 2, 0, 0, 3, 0, 1, 1, 0, 2, 0, 2, 0, 2, 0, 2, 1, 1, 1],
     [1, 1, 1, 2, 1, 1, 0, 1, 2, 1, 1, 1, 1, 1, 1, 0, 1, 2, 1, 1, 0, 1, 1, 1],
@@ -62,12 +66,19 @@ export let maze = [
    
   ];
 
- // function startScreen(){
+  function startScreen(){
+    image(startscreen,20,10,1200,1390);
+    strokeWeight(5);
+    fill(0);
+    rect(x+120,y+1100,400,150);
+    textSize(40);
+    fill(255,255,255);
+    text("Start Game", x+220, y+1200);
     
- // }
- // function gameScreen(){
-
- // }
+  }
+  function gameScreen(){
+    drawGrid();
+ }
 
   function WinScreen(){
     if(score === 2){
@@ -76,9 +87,9 @@ export let maze = [
     }
    
   }
-  //function LoseScreen(){
-
-  //}
+  function LoseScreen(){
+    image(lose_video);
+  }
 
   function preload() {
     img = loadImage('ratRight.png');
@@ -90,13 +101,15 @@ export let maze = [
     imgclosed_left = loadImage('ratClosedDown.png');
     imgclosed_down = loadImage('ratClosedLeft.png');
     imgclosed_up = loadImage('ratClosedRight.png');
-    // win_video = loadVideo('WinVideo.mp4');
+    win_video = loadImage('WinVideo.mp4');
+    lose_video = loadImage('GameOverVideo.mp4');
     normal_cheese = loadImage('normal-cheese.png');
     blue_cheese = loadImage('blue-cheese.png');
     red_exterminator = loadImage('redExterminator.png');
     purple_exterminator = loadImage('purpleExterminator.png');
     pink_exterminator = loadImage('pinkExterminator.png');
     grey_exterminator = loadImage('greyExterminator.png');
+    startscreen = loadImage('startScreen.jpg');
   }
   window.preload = preload;
 
@@ -122,7 +135,7 @@ export let maze = [
     strokeWeight(3);
   
     
-    
+    // https://www.youtube.com/watch?v=HyK_Q5rrcr4 continuation for the array
     for (let row = 0; row < maze.length; row++) {
       for (let col = 0; col < maze[row].length; col++) {
         if (maze[row][col] === 1) {
@@ -134,40 +147,60 @@ export let maze = [
         if (maze[row][col] === 3) {
           image(blue_cheese, col * boxSize , row * boxSize, boxSize, boxSize);
         }
-        if (maze[row][col] === 4) {
-          image(grey_exterminator, col * boxSize , row * boxSize, boxSize, boxSize);
-        }
       }
     }
  }
-
   function keyReleased() {
     rat.keyReleased();
     
   }
 window.keyReleased=keyReleased;
-  function draw() {
+  
+function draw() {
 
-    if(score === 2){
-     WinScreen();
-
-    }
-
-    drawGrid();
-    
-    rat.movement(); 
+    if(state === "start"){
+      startScreen();
+    }else if(state === "game"){
+      gameScreen();
+      drawGrid();
+      rat.movement(); 
     rat.show();
     rat.checkCollision();
-    
-   
     grey_exterminator.show();
     grey_exterminator.movement();
     red_exterminator.show();
+    red_exterminator.movement();
     pink_exterminator.show();
+    pink_exterminator.movement();
     purple_exterminator.show();
+    purple_exterminator.movement();
+
+    //dist(grey_exterminator.x, grey_exterminator.y, rat.x, rat.y) < 10
+    
+    } else if(state === "win"){
+      WinScreen();
+
+    }else if( state === "Game Over"){
+        LoseScreen();
+    }
+
+    if(score === 2){
+     WinScreen();
+    }
+    
     
   }
 window.draw = draw;
+
+function mouseClicked(){
+  if(state==="start"){
+    gameScreen();
+    drawGrid();
+  state = "game";
+  }else if(state === "win" || state === "lose"){}
+
+
+  }
 
 
 
