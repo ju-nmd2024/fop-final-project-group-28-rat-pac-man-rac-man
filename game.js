@@ -81,7 +81,7 @@ let maze = [
  }
 
   function WinScreen(){
-    if(score === 2){
+    if(score === 105){
       image(win_video, 0, 0, width, height);
 
     }
@@ -165,10 +165,9 @@ function draw() {
       gameScreen();
       drawGrid();
       rat.movement(); 
-    rat.show();
-    rat.checkCollision();
-    grey_exterminator.show();
-    grey_exterminator.movement();
+      rat.show();
+      grey_exterminator.show();
+      grey_exterminator.movement();
     red_exterminator.show();
     red_exterminator.movement();
     pink_exterminator.show();

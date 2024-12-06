@@ -40,32 +40,33 @@ export default class Rat{
 
     // Movement for each key
     if (keyIsDown(UP_ARROW)) {
-      if (maze[row - 1] && maze[row - 1][col] !== 1) { //Up arraow
-        this.img = this.imgup;
-        this.y -= 3;
+      if (row > 0 && maze[row - 1][col] !== 1) { 
+          this.img = this.imgup;
+          this.y -= 3;
       }
-    }
-    if (keyIsDown(DOWN_ARROW)) {
-      if (maze[row + 1] && maze[row + 1][col] !== 1) { //Down arraow
-        this.img = this.imgdown;
-        this.y += 3;
+  }
+  if (keyIsDown(DOWN_ARROW)) {
+      if (row < maze.length - 1 && maze[row + 1][col] !== 1) {
+          this.img = this.imgdown;
+          this.y += 3;
       }
-    }
-    if (keyIsDown(LEFT_ARROW)) {
-      if (maze[row] && maze[row][col - 1] !== 1) { //Left arraow
-        this.img = this.imgleft;
-        this.x -= 3;
+  }
+  if (keyIsDown(LEFT_ARROW)) {
+      if (col > 0 && maze[row][col - 1] !== 1) {
+          this.img = this.imgleft;
+          this.x -= 3;
       }
-    }
-    if (keyIsDown(RIGHT_ARROW)) {
-      if (maze[row] && maze[row][col + 1] !== 1) { //right arraow
-        this.img = this.imgright;
-        this.x += 3;
+  }
+  if (keyIsDown(RIGHT_ARROW)) {
+      if (col < maze[row].length - 1 && maze[row][col + 1] !== 1) {
+          this.img = this.imgright;
+          this.x += 3;
       }
-    }
   }
   
+  }
   
+
 
   // cheese eating
   // ratCenter becasue it tracks from the edge not the centre so we divided it by 2 
