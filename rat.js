@@ -1,5 +1,5 @@
 //codes taken from p5.js
-import { maze } from "./game.js";
+// import { maze } from "./game.js";
 
 export default class Rat{
   constructor(img,imgright,imgleft,imgup,imgdown,imgclosed_right,imgclosed_left,imgclosed_down,imgclosed_up){

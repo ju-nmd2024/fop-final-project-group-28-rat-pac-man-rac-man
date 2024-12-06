@@ -27,7 +27,7 @@ let purple_exterminator;
 let pink_exterminator;
 let grey_exterminator;
 let score;
-//let startScreen;
+let startscreen;
 let state = "start";
 //let gameState;
 // https://www.youtube.com/watch?v=HyK_Q5rrcr4 for the array only
@@ -101,15 +101,15 @@ let maze = [
     imgclosed_left = loadImage('ratClosedDown.png');
     imgclosed_down = loadImage('ratClosedLeft.png');
     imgclosed_up = loadImage('ratClosedRight.png');
-    win_video = loadImage('WinVideo.mp4');
-    lose_video = loadImage('GameOverVideo.mp4');
+    // win_video = loadImage('WinVideo.mp4');
+    // lose_video = loadImage('GameOverVideo.mp4');
     normal_cheese = loadImage('normal-cheese.png');
     blue_cheese = loadImage('blue-cheese.png');
     red_exterminator = loadImage('redExterminator.png');
     purple_exterminator = loadImage('purpleExterminator.png');
     pink_exterminator = loadImage('pinkExterminator.png');
     grey_exterminator = loadImage('greyExterminator.png');
-    startscreen = loadImage('startScreen.jpg');
+     startscreen = loadImage('startScreen.jpg');
   }
   window.preload = preload;
 
@@ -154,6 +154,7 @@ let maze = [
     rat.keyReleased();
     
   }
+
 window.keyReleased=keyReleased;
   
 function draw() {
@@ -201,6 +202,7 @@ function mouseClicked(){
 
 
   }
+  window.mouseClicked = mouseClicked;
 
 
 
