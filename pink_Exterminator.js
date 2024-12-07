@@ -28,7 +28,7 @@ export default class pink_Exterminator{
            //this.x = this.x - 3;
          }
        } else if(this.direction==="backwards"){
-         if(this.x>20){
+         if(this.x>140){
            this.x = this.x - 3;
          } else {
            this.direction = "forward";

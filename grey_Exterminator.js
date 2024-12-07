@@ -17,9 +17,6 @@ movement(){
    let row = Math.floor(grey_exterminatorY / 50);
 
 
-
-
-
   if(this.direction==="forward"){
     if((this.x < 1000)){
       this.x= this.x + 3;
@@ -29,7 +26,7 @@ movement(){
       //this.x = this.x - 3;
     }
   } else if(this.direction==="backwards"){
-    if(this.x>20){
+    if(this.x>140){
       this.x = this.x - 3;
     } else {
       this.direction = "forward";

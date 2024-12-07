@@ -29,7 +29,7 @@ export default class purple_Exterminator{
            //this.x = this.x - 3;
          }
        } else if(this.direction==="backwards"){
-         if(this.x>310){
+         if(this.x>340){
            this.x = this.x - 3;
          } else {
            this.direction = "forward";

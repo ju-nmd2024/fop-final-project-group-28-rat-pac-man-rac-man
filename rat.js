@@ -1,6 +1,5 @@
-//codes taken from p5.js
-// import { maze } from "./game.js";
-
+//syntax taken from p5.js
+//https://p5js.org/search/?term=class
 export default class Rat{
   constructor(img,imgright,imgleft,imgup,imgdown,imgclosed_right,imgclosed_left,imgclosed_down,imgclosed_up){
     this.size = 50; 
@@ -14,13 +13,14 @@ export default class Rat{
     this.imgclosed_down = imgclosed_down;
     this.imgclosed_up = imgclosed_up; 
     this.x = 560;
-    this.y = 590;
+    this.y = 890;
+    this.score = 0;
     
   }
   show(){
     image(this.img, this.x, this.y, 80, 50);
   }
-  movement() {
+  movement(maze) {
 
     let ratCenterX = this.x + 80 / 2;
     let ratCenterY = this.y + 50 / 2;
@@ -31,13 +31,6 @@ export default class Rat{
     if((col >= 24)){
       this.x = 0;
     }
-    // if((col = 0)){
-    //   this.x = 24;
-    // }
-
-
-   
-
     // Movement for each key
     if (keyIsDown(UP_ARROW)) {
       if (row > 0 && maze[row - 1][col] !== 1) { 
@@ -70,7 +63,7 @@ export default class Rat{
 
   // cheese eating
   // ratCenter becasue it tracks from the edge not the centre so we divided it by 2 
-  checkCollision() {
+  checkCollision(maze) {
     let ratCenterX =this.x + 80 /2;
     let ratCenterY =this.y + 50 /2;
     let col = Math.floor(ratCenterX/50 );  
@@ -82,14 +75,14 @@ export default class Rat{
     if (maze[row] && maze[row][col]) {
       if (maze[row][col] === 2 || maze[row][col] === 3) {  
         maze[row][col] = 0; 
-        score++;
+        this.score++;
         console.log("eaten");
-        console.log(score);
+        console.log(this.score);
       }
     }
     
-  }
   
+}
   keyReleased() {
       if (keyCode === UP_ARROW) {
         this.img = this.imgclosed_up;

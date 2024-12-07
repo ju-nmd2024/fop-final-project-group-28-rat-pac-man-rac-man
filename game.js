@@ -26,12 +26,12 @@ let red_exterminator;
 let purple_exterminator;
 let pink_exterminator;
 let grey_exterminator;
-let score;
+let score = 0;
 let startscreen;
 let state = "start";
 //let gameState;
 // https://www.youtube.com/watch?v=HyK_Q5rrcr4 for the array only
-let maze = [
+const maze = [
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
     [1, 1, 1, 2, 0, 0, 2, 0, 0, 2, 0, 2, 2, 0, 2, 0, 2, 0, 2, 0, 2, 1, 1,1 ],
     [1, 1, 1, 3, 1, 1, 0, 2, 1, 1, 2, 2, 2, 0, 1, 1, 0, 2, 1, 1, 0, 1, 1, 1],
@@ -79,6 +79,7 @@ let maze = [
   function gameScreen(){
     drawGrid();
  }
+ window.gameScreen = gameScreen;
 
   function WinScreen(){
     if(score === 105){
@@ -87,9 +88,28 @@ let maze = [
     }
    
   }
-  function LoseScreen(){
-    image(lose_video);
-  }
+  function LoseScreen(ratCenterX, ratCenterY, grey_ExterminatorX, grey_ExterminatorY, 
+    purple_ExterminatorX, purple_ExterminatorY, 
+    red_ExterminatorX, red_ExterminatorY, 
+    pink_ExterminatorX, pink_ExterminatorY) {
+
+    // Check if rat's position exactly matches any exterminator's position
+    if (ratCenterX === grey_ExterminatorX && ratCenterY === grey_ExterminatorY) {
+        state = "stop";
+    }
+    if (ratCenterX === purple_ExterminatorX && ratCenterY === purple_ExterminatorY) {
+        state = "stop";
+    }
+    if (ratCenterX === red_ExterminatorX && ratCenterY === red_ExterminatorY) {
+        state = "stop";
+    }
+    if (ratCenterX === pink_ExterminatorX && ratCenterY === pink_ExterminatorY) {
+        state = "stop";
+    }
+
+    return state;
+}
+
 
   function preload() {
     img = loadImage('ratRight.png');
@@ -164,7 +184,8 @@ function draw() {
     }else if(state === "game"){
       gameScreen();
       drawGrid();
-      rat.movement(); 
+      rat.movement(maze); 
+      rat.checkCollision(maze); 
       rat.show();
       grey_exterminator.show();
       grey_exterminator.movement();
@@ -180,14 +201,9 @@ function draw() {
     } else if(state === "win"){
       WinScreen();
 
-    }else if( state === "Game Over"){
+    }else if( state === "stop"){
         LoseScreen();
     }
-
-    if(score === 2){
-     WinScreen();
-    }
-    
     
   }
 window.draw = draw;
@@ -197,12 +213,12 @@ function mouseClicked(){
     gameScreen();
     drawGrid();
   state = "game";
-  }else if(state === "win" || state === "lose"){}
+  }else if(state === "win" || state === "stop"){}
 
 
   }
   window.mouseClicked = mouseClicked;
 
-
+  // https://chatgpt.com/share/6754bc9c-6dc4-8004-84d3-8653ab2a9d8f// (fixed the errors)
 
 
