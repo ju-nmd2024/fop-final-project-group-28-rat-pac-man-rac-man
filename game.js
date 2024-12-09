@@ -7,9 +7,7 @@ import pink_Exterminator from "./pink_exterminator.js";
 let x =300;
 let y = 100;
 let boxSize = 50;
-// let win_video;
-// let win_video = createVideo('/WinVideo.mp4');
-// let lose_video = createVideo('/WinVideo.mp4');
+ let win_picture;
 let rat;
 let normal_cheese;
 let blue_cheese;
@@ -29,6 +27,7 @@ let grey_exterminator;
 let score = 0;
 let startscreen;
 let state = "start";
+let scaleFactor = 2;//https://chatgpt.com/share/6756baa5-db30-8004-ae6d-f5925932bfe4
 //let gameState;
 // https://www.youtube.com/watch?v=HyK_Q5rrcr4 for the array only
 const maze = [
@@ -82,18 +81,10 @@ const maze = [
  window.gameScreen = gameScreen;
 
   function WinScreen(){
-    if(score === 105){
-      image(win_video, 0, 0, width, height);
-
-    }
+      image(win_picture,(width - img.width * scaleFactor) / 2, (height - img.height * scaleFactor) / 2, img.width * scaleFactor, img.height / scaleFactor); //https://chatgpt.com/share/6756baa5-db30-8004-ae6d-f5925932bfe4
    
   }
-  function LoseScreen(ratCenterX, ratCenterY, grey_ExterminatorX, grey_ExterminatorY, 
-    purple_ExterminatorX, purple_ExterminatorY, 
-    red_ExterminatorX, red_ExterminatorY, 
-    pink_ExterminatorX, pink_ExterminatorY) {
-
-    // Check if rat's position exactly matches any exterminator's position
+  function LoseScreen(){
     if (ratCenterX === grey_ExterminatorX && ratCenterY === grey_ExterminatorY) {
         state = "stop";
     }
@@ -106,11 +97,19 @@ const maze = [
     if (ratCenterX === pink_ExterminatorX && ratCenterY === pink_ExterminatorY) {
         state = "stop";
     }
-
-    return state;
 }
 
-
+//https://chatgpt.com/share/6756bada-0358-8004-84ab-fcecd23187dc  (first ten lines)
+function checkCheese() {
+  for (let row = 0; row < maze.length; row++) {
+    for (let col = 0; col < maze[row].length; col++) {
+      if (maze[row][col] === 2 || maze[row][col] === 3) {
+        return false; 
+      }
+    }
+  }
+  return true; 
+}
   function preload() {
     img = loadImage('ratRight.png');
     imgright = loadImage('ratRight.png');
@@ -121,7 +120,7 @@ const maze = [
     imgclosed_left = loadImage('ratClosedDown.png');
     imgclosed_down = loadImage('ratClosedLeft.png');
     imgclosed_up = loadImage('ratClosedRight.png');
-    // win_video = loadImage('WinVideo.mp4');
+     win_picture = loadImage('you_win.png');
     // lose_video = loadImage('GameOverVideo.mp4');
     normal_cheese = loadImage('normal-cheese.png');
     blue_cheese = loadImage('blue-cheese.png');
@@ -197,8 +196,12 @@ function draw() {
     purple_exterminator.movement();
 
     //dist(grey_exterminator.x, grey_exterminator.y, rat.x, rat.y) < 10
-    
-    } else if(state === "win"){
+    //https://chatgpt.com/share/6756bada-0358-8004-84ab-fcecd23187dc (first two lines)
+    if (checkCheese()) {
+      state = "win";
+    }
+
+    } if(state === "win"){
       WinScreen();
 
     }else if( state === "stop"){
@@ -213,7 +216,9 @@ function mouseClicked(){
     gameScreen();
     drawGrid();
   state = "game";
-  }else if(state === "win" || state === "stop"){}
+  }else if(state === "win" || state === "stop"){
+    WinScreen();
+  }
 
 
   }
