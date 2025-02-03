@@ -1,9 +1,9 @@
 
 import Rat from "../rat.js";
 import grey_Exterminator from "/grey_exterminator.js";
-import red_Exterminator from "red_exterminator.js";
-import purple_Exterminator from "purple_exterminator.js";
-import pink_Exterminator from "pink_exterminator.js";
+import red_Exterminator from "/red_exterminator.js";
+import purple_Exterminator from "/purple_exterminator.js";
+import pink_Exterminator from "/pink_exterminator.js";
 let x =300;
 let y = 100;
 let boxSize = 50;
