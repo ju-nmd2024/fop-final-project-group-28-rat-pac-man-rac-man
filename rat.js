@@ -58,9 +58,6 @@ export default class Rat{
   }
   
   }
-  
-
-
   // cheese eating
   // ratCenter becasue it tracks from the edge not the centre so we divided it by 2 
   checkCollision(maze) {
