@@ -78,7 +78,7 @@ const maze = [
   }
   function gameScreen(){
     drawGrid();
- }
+ } 
  window.gameScreen = gameScreen;
 
   function WinScreen(){
@@ -87,8 +87,9 @@ const maze = [
   }
   function LoseScreen(){
     clear();
-    image(game_overpicture,(width - img.width * scaleFactor)/2, (height - img.height * scaleFactor)/2, img.width * scaleFactor,img.height/scaleFactor);
+    image(game_overpicture,(width - img.width * scaleFactor) / 2, (height - img.height * scaleFactor) / 2, img.width * scaleFactor, img.height / scaleFactor);
 }
+
 
 //https://chatgpt.com/share/6756bada-0358-8004-84ab-fcecd23187dc  (first ten lines)
 function checkCheese() {
@@ -101,29 +102,43 @@ function checkCheese() {
   }
   return true; 
 }
-function loseCondition(){
-  let ratCenterX = rat.x + boxSize/2;
-  let ratCenterY = rat.y + boxSize/2;
+function loseCondition() {
+  let ratCenterX = rat.x + boxSize / 2;
+  let ratCenterY = rat.y + boxSize / 2;
 
-  let grey_ExterminatorX = grey_exterminator.x + boxSize/2;
-  let grey_ExterminatorY = grey_exterminator.y + boxSize /2;
+  let grey_ExterminatorX = grey_exterminator.x + boxSize / 2;
+  let grey_ExterminatorY = grey_exterminator.y + boxSize / 2;
 
-  let red_ExterminatorX = red_exterminator.x + boxSize/2;
-  let red_ExterminatorY = red_exterminator.y + boxSize /2;
+  let red_ExterminatorX = red_exterminator.x + boxSize / 2;
+  let red_ExterminatorY = red_exterminator.y + boxSize / 2;
 
-  let purple_ExterminatorX = purple_exterminator.x + boxSize/2;
-  let purple_ExterminatorY = purple_exterminator.y + boxSize /2;
+  let purple_ExterminatorX = purple_exterminator.x + boxSize / 2;
+  let purple_ExterminatorY = purple_exterminator.y + boxSize / 2;
 
-  let pink_ExterminatorX = pink_exterminator.x + boxSize/2;
-  let pink_ExterminatorY = pink_exterminator.y + boxSize /2;
+  let pink_ExterminatorX = pink_exterminator.x + boxSize / 2;
+  let pink_ExterminatorY = pink_exterminator.y + boxSize / 2;
 
-  if(dist(ratCenterX, ratCenterY, grey_ExterminatorX, grey_ExterminatorY)< boxSize / 2 ||
-     dist(ratCenterX, ratCenterY, red_ExterminatorX, red_ExterminatorY) < boxSize / 2 ||
-     dist(ratCenterX, ratCenterY, purple_ExterminatorX, purple_ExterminatorY) < boxSize / 2 ||
-     dist(ratCenterX, ratCenterY, pink_ExterminatorX, pink_ExterminatorY) < boxSize / 2) {
+  if (dist(ratCenterX, ratCenterY, grey_ExterminatorX, grey_ExterminatorY) < boxSize / 2 ||
+      dist(ratCenterX, ratCenterY, red_ExterminatorX, red_ExterminatorY) < boxSize / 2 ||
+      dist(ratCenterX, ratCenterY, purple_ExterminatorX, purple_ExterminatorY) < boxSize / 2 ||
+      dist(ratCenterX, ratCenterY, pink_ExterminatorX, pink_ExterminatorY) < boxSize / 2) {
       state = "stop";
   }
 }
+/*function loseCondition(){
+  if (ratCenterX === grey_ExterminatorX && ratCenterY === grey_ExterminatorY) {
+    state = "stop";
+}
+if (ratCenterX === purple_ExterminatorX && ratCenterY === purple_ExterminatorY) {
+    state = "stop";
+}
+if (ratCenterX === red_ExterminatorX && ratCenterY === red_ExterminatorY) {
+    state = "stop";
+}
+if (ratCenterX === pink_ExterminatorX && ratCenterY === pink_ExterminatorY) {
+    state = "stop";
+} console.log("game");
+} */
   function preload() {
     img = loadImage('ratRight.png');
     imgright = loadImage('ratRight.png');
@@ -134,15 +149,15 @@ function loseCondition(){
     imgclosed_left = loadImage('ratClosedDown.png');
     imgclosed_down = loadImage('ratClosedLeft.png');
     imgclosed_up = loadImage('ratClosedRight.png');
-    win_picture = loadImage('you_win.png');
-    game_overpicture= loadImage('game-over.png');
+   win_picture = loadImage('you_win.png');
+    game_overpicture = loadImage('game-over.png');
     normal_cheese = loadImage('normal-cheese.png');
     blue_cheese = loadImage('blue-cheese.png');
     red_exterminator = loadImage('redExterminator.png');
     purple_exterminator = loadImage('purpleExterminator.png');
     pink_exterminator = loadImage('pinkExterminator.png');
     grey_exterminator = loadImage('greyExterminator.png');
-    startscreen = loadImage('startScreen.jpg');
+     startscreen = loadImage('startScreen.jpg');
   }
   window.preload = preload;
 
@@ -159,7 +174,6 @@ function loseCondition(){
   }
   window.setup = setup;
  
-
 
   function drawGrid(){
   background(0); 
@@ -183,7 +197,7 @@ function loseCondition(){
       }
     }
  }
- function keyReleased() {
+  function keyReleased() {
     rat.keyReleased();
     
   }
@@ -198,18 +212,17 @@ function draw() {
       gameScreen();
       drawGrid();
       rat.movement(maze); 
-      rat.checkCollision(maze); 
+      rat.checkCollision(maze);   
       rat.show();
       grey_exterminator.show();
       grey_exterminator.movement();
-      red_exterminator.show();
-      red_exterminator.movement();
-      pink_exterminator.show();
-      pink_exterminator.movement();
-      purple_exterminator.show();
-      purple_exterminator.movement();
-      loseCondition();
-     
+    red_exterminator.show();
+    red_exterminator.movement();
+    pink_exterminator.show();
+    pink_exterminator.movement();
+    purple_exterminator.show();
+    purple_exterminator.movement();
+    loseCondition();
 
     //dist(grey_exterminator.x, grey_exterminator.y, rat.x, rat.y) < 10
     //https://chatgpt.com/share/6756bada-0358-8004-84ab-fcecd23187dc (first two lines)
@@ -236,10 +249,12 @@ function mouseClicked(){
     startScreen();
   }
 
-
   }
   window.mouseClicked = mouseClicked;
 
   // https://chatgpt.com/share/6754bc9c-6dc4-8004-84d3-8653ab2a9d8f// (fixed the errors)
 
 
+
+
+  
