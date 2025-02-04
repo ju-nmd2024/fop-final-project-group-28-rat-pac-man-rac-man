@@ -1,27 +1,26 @@
 //codes taken from p5.js
 // https://p5js.org/reference/p5/class/
-export default class red_Exterminator{
-    constructor(red_Exterminator){
+export default class pink_Exterminator{
+    constructor(pink_Exterminator){
         this.size = 10;
-        this.x = 560;
-        this.y = 585;
-        this.red_Exterminator = red_Exterminator;
+        this.x = 140;
+        this.y = 30;
+        this.pink_Exterminator = pink_Exterminator;
         this.boxsize = 50;
         this.direction = "forward";
     }
 
     movement(){
-
-        let red_exterminatorX = this.x + 70 ;
-        let red_exterminatorY = this.y + 90 ;
-        let col = Math.floor(red_exterminatorX / 50);
-        let row = Math.floor(red_exterminatorY / 50);
+        let pink = this.x + 70 ;
+        let pink_exterminatorY = this.y + 90 ;
+        let col = Math.floor(pink / 50);
+        let row = Math.floor(pink_exterminatorY / 50);
    
    
    
      
        if(this.direction==="forward"){
-         if((this.x < 1100)){
+         if((this.x < 1000)){
            this.x= this.x + 3;
            console.log(this.x);
          } else{
@@ -29,16 +28,15 @@ export default class red_Exterminator{
            //this.x = this.x - 3;
          }
        } else if(this.direction==="backwards"){
-         if(this.x>20){
+         if(this.x>140){
            this.x = this.x - 3;
          } else {
            this.direction = "forward";
          }
        } 
-   
     }
 
     show(){
-        image(this.red_Exterminator, this.x, this.y, 70, 90);
+        image(this.pink_Exterminator, this.x, this.y, 70, 90);
     }
 }
